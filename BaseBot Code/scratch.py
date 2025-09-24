@@ -635,13 +635,18 @@ class maindialog:
             except:
                 emptyval = True
         def testbinding(event):
-            print(event)
+            print(event.char)
             sevent = str(event)
             cursorindex = int(self.enterdata.index(tk.INSERT))
             subs = sevent[23:24]
             secondlet = sevent[24:25]
+            print('subs')
             print(subs)
-            self.prediction(subs, secondlet, cursorindex)
+            print('secondlet')
+            print(secondlet)
+            print('sevent')
+            print(sevent)
+            self.prediction(event.char, secondlet, cursorindex)
         self.currentincrementmax = 30
         #######GUI DIALOG CONTROL TOOLS###########
         self.listTrainingGuiPresent = False
@@ -685,7 +690,9 @@ class maindialog:
         self.SelectModeLabel.grid(row=1, column=0)
         self.enterdata = tk.Entry(self.frame)
         self.currentString = tk.StringVar()
+        ###This is causing issue
         self.currentString.set('No')
+
         self.enterdata.grid(row=1, column=1)
         self.enterdata.bind('<Key>', testbinding)
         #self.enterdata.bind('<Key>', lastchar)
@@ -1292,7 +1299,13 @@ class maindialog:
         new = self.enterdata.get()
         outputsetting = 'No'
         #self.enterdata.bind('<Key>', lastchar)
+        print('prediction')
         print(new)
+        print('char')
+        print(firstKey)
+        newstr = new+firstKey
+        ###########Not certain what this was for########################################
+        '''
         if secondKey == ' ':
             newstr = new[:charindex] + firstKey + new[charindex:]
         elif firstKey == 'B' and secondKey == 'a':
@@ -1300,6 +1313,8 @@ class maindialog:
             leng = len(newstr)
             min = leng - 1
             newstr = newstr[:min]
+        '''
+        ####################################################################################
         presentvalue = self.currentString.get()
         currentData = {}
         currentdatlen = len(newstr)
