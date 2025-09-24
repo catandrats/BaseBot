@@ -575,7 +575,7 @@ class setupdialog:#Accessed by clicking Create new Project or Save when a projec
         print(useddictionary.letterdiction)
         datapath = getdatapath()
         eventfile = datapath+'\\BaseBot\\'+str(self.entryProject.get())+'\\events.json'
-
+        #test push
         ########################################################################
         ###Save database to json use binary statement to descriminate between prompts ify on the binary statement
         if self.newsetup == False:
